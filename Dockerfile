@@ -12,9 +12,9 @@ RUN pip install --upgrade pip
 COPY requirements.txt ./
 
 # Copy Model and Dataset
-COPY model/ ./
-COPY tokenizer/ ./
-COPY data_rekomendasi.csv ./
+COPY model/ /opt/
+COPY tokenizer/ /opt/
+COPY data_rekomendasi.csv /opt/
 
 # Install the dependencies
 RUN pip install -r requirements.txt
