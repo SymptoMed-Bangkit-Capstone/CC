@@ -18,7 +18,7 @@ port = int(os.environ.get("PORT", 8080))
 class Item(BaseModel):
     query:str
 
-model = BertForSequenceClassification.from_pretrained("/app/model", from_tf=True)
+model = BertForSequenceClassification.from_pretrained("/app/model")
 tokenizer = BertTokenizer.from_pretrained("/app/tokenizer", local_files_only=True)
 data_rekomendasi = pd.read_csv("/app/data_rekomendasi.csv", sep=';')
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, top_k = 42)
