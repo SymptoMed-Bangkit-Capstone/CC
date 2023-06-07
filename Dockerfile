@@ -17,7 +17,7 @@ CMD ["cp", "-r", "tokenizer/", "/app"]
 CMD ["cp", "data_rekomendasi.csv", "/app"]
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Copy the FastAPI app code into the container
 CMD ["cp", "-r", ".", "/app"]
