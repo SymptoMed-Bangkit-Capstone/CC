@@ -16,7 +16,6 @@ steps:
   - 'gcr.io/capstone-symptomed/cc:$COMMIT_SHA'
   - '--platform'
   - 'managed'
-  - '--allow-unauthenticated'
   - '--region'
   - 'asia-east1'
 images:
