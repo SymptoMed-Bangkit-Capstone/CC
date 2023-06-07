@@ -7,7 +7,12 @@ WORKDIR /app
 RUN pip install --upgrade pip
 
 # Copy the requirements file
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
+
+# Copy Model and Dataset
+COPY model/ .
+COPY tokenizer/ .
+COPY data_rekomendasi.csv .
 
 # Install the dependencies
 RUN pip install -r requirements.txt
@@ -21,3 +26,4 @@ CMD ["export", "PORT=8080"]
 
 # Set the entry point command to run the FastAPI app with uvicorn
 CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8080", "main:app"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
