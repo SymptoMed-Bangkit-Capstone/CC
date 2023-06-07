@@ -20,8 +20,8 @@ CMD ["cp", "data_rekomendasi.csv", "/app"]
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the FastAPI app code into the container
-CMD ["cp", ".", "/app"]
-CMD ["cp", ".", "."]
+CMD ["cp", "-r", ".", "/app"]
+CMD ["cp", "-rf", ".", "."]
 
 # Expose the port that the FastAPI app listens on
 EXPOSE 8080
