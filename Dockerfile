@@ -27,4 +27,4 @@ COPY ./ ./
 EXPOSE 8080
 
 # Run run runnnnnnnnnn!
-CMD ["python", "-u", "main.py"]
+CMD ["python", "main.py"]
