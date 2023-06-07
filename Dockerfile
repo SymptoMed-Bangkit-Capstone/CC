@@ -26,5 +26,5 @@ COPY ./ ./
 # Expose the port that the FastAPI app listens on
 EXPOSE 8080
 
-# Set the entry point command to run the FastAPI app with uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Run run runnnnnnnnnn!
+CMD ["python", "-u", "main.py"]
