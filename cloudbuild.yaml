@@ -16,6 +16,8 @@ steps:
   - 'gcr.io/capstone-symptomed/cc:$COMMIT_SHA'
   - '--platform'
   - 'managed'
+  - '--max-instances'
+  - '15'
   - '--region'
   - 'asia-east1'
 images:
