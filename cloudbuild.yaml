@@ -13,7 +13,7 @@ steps:
   - 'deploy'
   - 'cc'
   - '--image'
-  - 'gcr.io/Capstone-symptomed/my-capstone-app:$COMMIT_SHA'
+  - 'gcr.io/Capstone-symptomed/cc:$COMMIT_SHA'
   - '--allow-unauthenticated'
   - '--region'
   - 'asia-east1'
