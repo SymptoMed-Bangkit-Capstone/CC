@@ -1,6 +1,7 @@
 regex 
 gdown
 pandas
+os-sys
 Sastrawi
 xformers
 transformers
