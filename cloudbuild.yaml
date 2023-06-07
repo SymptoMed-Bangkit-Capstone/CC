@@ -18,4 +18,4 @@ steps:
   - '--region'
   - 'asia-east1'
 images:
-- 'gcr.io/Capstone-symptomed/my-capstone-app:$COMMIT_SHA'
+- 'gcr.io/Capstone-symptomed/cc:$COMMIT_SHA'
