@@ -1,7 +1,8 @@
 FROM python:3.8.16
 
 # Set the working directory in the container
-WORKDIR /app
+ENV APP_HOME /app
+WORKDIR $APP_HOME
 
 # Upgrade PIP
 RUN pip install --upgrade pip
@@ -10,15 +11,15 @@ RUN pip install --upgrade pip
 COPY requirements.txt .
 
 # Copy Model and Dataset
-COPY model/ .
-COPY tokenizer/ .
-COPY data_rekomendasi.csv .
+COPY model/ ./
+COPY tokenizer/ ./
+COPY data_rekomendasi.csv ./
 
 # Install the dependencies
 RUN pip install -r requirements.txt
 
 # Copy the FastAPI app code into the container
-COPY . .
+COPY . ./
 
 # Expose the port that the FastAPI app listens on
 EXPOSE 8080
