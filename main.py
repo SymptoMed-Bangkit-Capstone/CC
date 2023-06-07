@@ -19,7 +19,7 @@ class Item(BaseModel):
     query:str
 
 tokenizer = BertTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
-model = BertForSequenceClassification.from_pretrained("./model", from_tf=True)
+model = BertForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
 data_rekomendasi = pd.read_csv("./data_rekomendasi.csv", sep=';')
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, top_k = 42)
 
