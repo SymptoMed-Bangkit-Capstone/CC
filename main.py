@@ -11,7 +11,7 @@ from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 app = FastAPI()  # create a new FastAPI app instance
-port = int(os.environ.get("PORT", 8080))
+port = int(os.environ.get("PORT", 8888))
 # port = 8080
 
 # Define a Pydantic model for an item
