@@ -9,18 +9,18 @@ WORKDIR $APP_HOME
 RUN pip install --upgrade pip
 
 # Copy the requirements file
-COPY requirements.txt ./
+COPY requirements.txt /app
 
 # Copy Model and Dataset
-COPY model/ /opt/
-COPY tokenizer/ /opt/
-COPY data_rekomendasi.csv /opt/
+COPY model/ /app
+COPY tokenizer/ /app
+COPY data_rekomendasi.csv /app
 
 # Install the dependencies
 RUN pip install -r requirements.txt
 
 # Copy the FastAPI app code into the container
-COPY . ./
+COPY . /app
 
 # Expose the port that the FastAPI app listens on
 EXPOSE 8080
