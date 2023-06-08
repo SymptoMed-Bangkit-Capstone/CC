@@ -1,25 +1,26 @@
+import os
 import itertools
 import uvicorn, re
 import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import TextClassificationPipeline
-from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
 from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
 app = FastAPI()  # create a new FastAPI app instance
-# port = int(os.getenv("PORT"))
-port = 8080
+port = int(os.environ.get("PORT", 8000))
+# port = 8080
 
 # Define a Pydantic model for an item
 class Item(BaseModel):
     query:str
 
-model = BertForSequenceClassification.from_pretrained("./model", from_tf=True)                 # sesuaikan dengan nama folder model yang sudah diupload
-tokenizer = BertTokenizer.from_pretrained("./tokenizer", local_files_only=True)               # sesuaikan dengan nama folder tokenizer yang sudah diupload
-data_rekomendasi = pd.read_csv("./data_rekomendasi.csv", sep=';')     # sesuaikan dengan nama file data rekomendasi yang sudah diupload
+tokenizer = AutoTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
+model = AutoModelForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
+data_rekomendasi = pd.read_csv("./data_rekomendasi.csv", sep=';')
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, top_k = 42)
 
 factory = StopWordRemoverFactory()
@@ -91,4 +92,4 @@ def add_item(item: Item):
     }
 
 if __name__ == '__main__':
-    uvicorn.run(app, host="localhost", port=port, timeout_keep_alive=1200)
+    uvicorn.run(app, host="0.0.0.0", port=port, timeout_keep_alive=3600)

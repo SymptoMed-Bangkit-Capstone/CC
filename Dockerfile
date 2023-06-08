@@ -1,19 +1,30 @@
 FROM python:3.8.16
 
 # Set the working directory in the container
+ENV PYTHONUNBUFFERED=TRUE
+ENV PORT=8000
 WORKDIR /app
+RUN export PORT=8000
+
+# Upgrade PIP
+RUN pip install --upgrade pip
 
 # Copy the requirements file
-COPY requirements.txt .
+COPY requirements.txt ./
+
+# Copy Model and Dataset
+COPY ./model ./
+COPY ./tokenizer ./
+COPY ./data_rekomendasi.csv ./
 
 # Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r ./requirements.txt
 
 # Copy the FastAPI app code into the container
-COPY . .
+COPY ./ ./
 
 # Expose the port that the FastAPI app listens on
-EXPOSE 8080
+EXPOSE 8000
 
-# Set the entry point command to run the FastAPI app with uvicorn
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Run run runnnnnnnnnn!
+CMD ["python", "main.py"]
