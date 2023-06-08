@@ -22,13 +22,13 @@ ENV PATH="/opt/symptomed/app/venv/bin:$PATH"
 # Copy the requirements file
 COPY requirements.txt ./
 
+# Install the dependencies
+RUN pip3 install -r ./requirements.txt
+
 # Final Build Stage
 FROM python:3.8.10
 
 WORKDIR /opt/symptomed/app
-
-# Install the dependencies
-RUN pip3 install -r ./requirements.txt
 
 # Copy the FastAPI app code into the container
 COPY --from=build /opt/symptomed/app/venv ./venv
