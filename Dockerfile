@@ -14,21 +14,21 @@ RUN apt-get update && \
     gcc build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    /opt/symptomed/app/venv/bin/python3 -m pip3 install --upgrade pip && \
-    /opt/symptomed/app/venv/bin/python3 -m venv /opt/symptomed/app/venv
+    pip install --upgrade pip && \
+    python -m venv /opt/symptomed/app/venv
 
 ENV PATH="/opt/symptomed/app/venv/bin:$PATH"
 
 # Copy the requirements file
 COPY requirements.txt ./
 
-# Install the dependencies
-RUN /opt/symptomed/app/venv/bin/python3 -m pip3 install -r ./requirements.txt
-
 # Final Build Stage
 FROM python:3.8.10
 
 WORKDIR /opt/symptomed/app
+
+# Install the dependencies
+RUN python -m pip install -r ./requirements.txt
 
 # Copy the FastAPI app code into the container
 COPY --from=build /opt/symptomed/app/venv ./venv
@@ -43,4 +43,4 @@ WORKDIR /opt/symptomed/app/src
 EXPOSE 8080
 
 # Run run runnnnnnnnnn!
-CMD ["python3", "main.py"]
+CMD ["python", "main.py"]
