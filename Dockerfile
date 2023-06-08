@@ -14,8 +14,8 @@ RUN apt-get update && \
     gcc build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    pip3 install --upgrade pip && \
-    python -m venv /opt/symptomed/app/venv
+    /opt/symptomed/app/venv/bin/python3 -m pip3 install --upgrade pip && \
+    /opt/symptomed/app/venv/bin/python3 -m venv /opt/symptomed/app/venv
 
 ENV PATH="/opt/symptomed/app/venv/bin:$PATH"
 
@@ -23,7 +23,7 @@ ENV PATH="/opt/symptomed/app/venv/bin:$PATH"
 COPY requirements.txt ./
 
 # Install the dependencies
-RUN pip3 install -r ./requirements.txt
+RUN /opt/symptomed/app/venv/bin/python3 -m pip3 install -r ./requirements.txt
 
 # Final Build Stage
 FROM python:3.8.10
