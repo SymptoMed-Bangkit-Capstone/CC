@@ -10,7 +10,7 @@ from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
 from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
-gdown.download(id="1uaJTb-NEXqK5OxUffCp8YTWTVZSfuonf", output="./model", quiet=False)
+gdown.download(id="1uaJTb-NEXqK5OxUffCp8YTWTVZSfuonf", output="./model/tf_model.h5", quiet=False)
 
 app = FastAPI()  # create a new FastAPI app instance
 port = int(os.environ.get("PORT", 8080))
