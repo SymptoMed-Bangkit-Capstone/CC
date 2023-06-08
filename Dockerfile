@@ -14,7 +14,6 @@ COPY requirements.txt ./
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r ./requirements.txt
-RUN gdown 1uaJTb-NEXqK5OxUffCp8YTWTVZSfuonf -O ./model --folder
 
 # Copy Model and Dataset
 COPY ./model ./
