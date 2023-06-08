@@ -2,9 +2,9 @@ FROM python:3.8.16
 
 # Set the working directory in the container
 ENV PYTHONUNBUFFERED=TRUE
-ENV PORT=8080
+ENV PORT=8000
 WORKDIR /app
-RUN export PORT=8080
+RUN export PORT=8000
 
 # Upgrade PIP
 RUN pip install --upgrade pip
@@ -24,7 +24,7 @@ RUN pip install --no-cache-dir -r ./requirements.txt
 COPY ./ ./
 
 # Expose the port that the FastAPI app listens on
-EXPOSE 8080
+EXPOSE 8000
 
 # Run run runnnnnnnnnn!
 CMD ["python", "main.py"]
