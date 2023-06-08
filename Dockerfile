@@ -14,7 +14,7 @@ RUN apt-get update && \
     gcc build-essential && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    pip install --upgrade pip && \
+    pip3 install --upgrade pip && \
     python -m venv /opt/symptomed/app/venv
 
 ENV PATH="/opt/symptomed/app/venv/bin:$PATH"
@@ -28,7 +28,7 @@ FROM python:3.8.10
 WORKDIR /opt/symptomed/app
 
 # Install the dependencies
-RUN python -m pip install -r ./requirements.txt
+RUN pip3 install -r ./requirements.txt
 
 # Copy the FastAPI app code into the container
 COPY --from=build /opt/symptomed/app/venv ./venv
@@ -43,4 +43,4 @@ WORKDIR /opt/symptomed/app/src
 EXPOSE 8080
 
 # Run run runnnnnnnnnn!
-CMD ["python", "main.py"]
+CMD ["python3", "main.py"]
