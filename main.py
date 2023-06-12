@@ -88,7 +88,7 @@ def add_item(item: Item):
 
     return {
         "Kelas": hasil,
-        "Proabilitas": probability,
+        "Probabilitas": probability,
         "link": link,
         "Rekomendasi": saran
     }
