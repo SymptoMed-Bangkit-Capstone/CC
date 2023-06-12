@@ -18,6 +18,7 @@ steps:
   - 'managed'
   - '--max-instances'
   - '15'
+  - '--allow-unauthenticated'
   - '--region'
   - 'asia-east1'
 images:
