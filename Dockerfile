@@ -2,20 +2,15 @@ FROM python:3.8.16
 
 # Set the working directory in the container
 ENV PYTHONUNBUFFERED=TRUE
-ENV PORT=8000
+ENV PORT=8080
 WORKDIR /app
-RUN export PORT=8000
+RUN export PORT=8080
 
 # Upgrade PIP
 RUN pip install --upgrade pip
 
 # Copy the requirements file
 COPY requirements.txt ./
-
-# Copy Model and Dataset
-COPY ./model ./
-COPY ./tokenizer ./
-COPY ./data_rekomendasi.csv ./
 
 # Install the dependencies
 RUN pip install --no-cache-dir -r ./requirements.txt
@@ -24,7 +19,7 @@ RUN pip install --no-cache-dir -r ./requirements.txt
 COPY ./ ./
 
 # Expose the port that the FastAPI app listens on
-EXPOSE 8000
+EXPOSE 8080
 
 # Run run runnnnnnnnnn!
 CMD ["python", "main.py"]
