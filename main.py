@@ -1,4 +1,4 @@
-import os
+import os, gdown
 import itertools
 import uvicorn, re
 import pandas as pd
@@ -10,6 +10,8 @@ from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
 from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
 
+gdown.download(id="1uaJTb-NEXqK5OxUffCp8YTWTVZSfuonf", output="./model/tf_model.h5", quiet=False)
+
 app = FastAPI()  # create a new FastAPI app instance
 port = int(os.environ.get("PORT", 8000))
 # port = 8080
@@ -18,8 +20,8 @@ port = int(os.environ.get("PORT", 8000))
 class Item(BaseModel):
     query:str
 
-tokenizer = AutoTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
-model = AutoModelForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
+tokenizer = BertTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
+model = BertForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
 data_rekomendasi = pd.read_csv("./data_rekomendasi.csv", sep=';')
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, top_k = 42)
 
@@ -67,16 +69,16 @@ def add_item(item: Item):
 
     if len(item.query) < 25 or len((item.query).split()) < 4:
         hasil = 'Karakter terlalu sedikit'
-        probability = ''
-        link = ''
+        probability = '-'
+        link = 'https://www.google.com/'
         saran = 'Cobalah masukkan gejala yang lebih detail'
     else:
         hasil, probability = predict(item.query)
 
         if probability < 50:
             hasil = 'Tidak Ada Kecocokan'
-            probability = ''
-            link = ''
+            probability = '-'
+            link = 'https://www.google.com/'
             saran = 'Cobalah masukkan gejala yang lebih spesifik'
         else:
             probability = str(probability) + '%'
@@ -86,7 +88,7 @@ def add_item(item: Item):
 
     return {
         "Kelas": hasil,
-        "Proabilitas": probability,
+        "Probabilitas": probability,
         "link": link,
         "Rekomendasi": saran
     }
