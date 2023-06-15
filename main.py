@@ -5,7 +5,7 @@ import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import TextClassificationPipeline
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import BertTokenizer, BertForSequenceClassification
 from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
 from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
@@ -20,8 +20,8 @@ port = int(os.environ.get("PORT", 8080))
 class Item(BaseModel):
     query:str
 
-tokenizer = AutoTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
-model = AutoModelForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
+tokenizer = BertTokenizer.from_pretrained("./tokenizer", from_tf=True, local_files_only=True)
+model = BertForSequenceClassification.from_pretrained("./model", from_tf=True, local_files_only=True)
 data_rekomendasi = pd.read_csv("./data_rekomendasi.csv", sep=';')
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, top_k = 42)
 
