@@ -69,16 +69,16 @@ def add_item(item: Item):
 
     if len(item.query) < 25 or len((item.query).split()) < 4:
         hasil = 'Karakter terlalu sedikit'
-        probability = ''
-        link = ''
+        probability = '-'
+        link = 'https://www.google.com/'
         saran = 'Cobalah masukkan gejala yang lebih detail'
     else:
         hasil, probability = predict(item.query)
 
         if probability < 50:
             hasil = 'Tidak Ada Kecocokan'
-            probability = ''
-            link = ''
+            probability = '-'
+            link = 'https://www.google.com/'
             saran = 'Cobalah masukkan gejala yang lebih spesifik'
         else:
             probability = str(probability) + '%'
