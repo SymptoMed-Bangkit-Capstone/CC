@@ -5,7 +5,7 @@ import pandas as pd
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import TextClassificationPipeline
-from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from Sastrawi.Dictionary.ArrayDictionary import ArrayDictionary
 from Sastrawi.StopWordRemover.StopWordRemover import StopWordRemover
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
@@ -13,7 +13,7 @@ from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFacto
 gdown.download(id="1uaJTb-NEXqK5OxUffCp8YTWTVZSfuonf", output="./model/tf_model.h5", quiet=False)
 
 app = FastAPI()  # create a new FastAPI app instance
-port = int(os.environ.get("PORT", 8080))
+port = int(os.environ.get("PORT", 8000))
 # port = 8080
 
 # Define a Pydantic model for an item
