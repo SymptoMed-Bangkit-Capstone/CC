@@ -1,6 +1,7 @@
 # CC Instruction
 
 # Architecture
+Architecture.png
 
 # Running Local
 
