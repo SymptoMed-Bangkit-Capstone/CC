@@ -71,9 +71,7 @@ python main.py
 <p align="center">
   <img src="image/api.png">
 </p>
-<p align="center">
-  <img src="image/cloud.png">
-</p>
+
 <p align="center">
   <img src="image/firebase.png">
 </p>
