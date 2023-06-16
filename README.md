@@ -5,6 +5,13 @@
   <img src="image/Architecture.png">
 </p>
 
+# How to Use
+
+- Local Host: Run with python, local IP and Port:8080
+ `http://localhost:8080/`
+- Online Domain:
+  `https://cc-j32xtogboa-de.a.run.app/docs`
+
 # Running Local
 
 ## Set up environment
