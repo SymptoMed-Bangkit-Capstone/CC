@@ -1,5 +1,7 @@
 # CC Instruction
 
+# Architecture
+
 # Running Local
 
 ## Set up environment
