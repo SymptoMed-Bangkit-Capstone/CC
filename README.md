@@ -11,7 +11,8 @@
  `http://localhost:8080/`
 - Online Domain:
   `https://cc-j32xtogboa-de.a.run.app/docs`
-
+  
+<p align="center">Successful Response</p>
   <p align="center">
   <img src="image/get.png">
 </p>
