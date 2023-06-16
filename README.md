@@ -1,7 +1,6 @@
 # CC Instruction
 
-# Architecture
-
+<h1 align="center">Architecture</h1>
 <p align="center">
   <img src="image/Architecture.png">
 </p>
