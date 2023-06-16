@@ -12,6 +12,18 @@
 - Online Domain:
   `https://cc-j32xtogboa-de.a.run.app/docs`
 
+  <p align="center">
+  <img src="image/get.png">
+</p>
+<p align="center">Successful Response</p>
+<p align="center">
+  <img src="image/post200.png">
+</p>
+<p align="center">Validation Error</p>
+<p align="center">
+  <img src="image/post422.png">
+</p>
+
 # Running Local
 
 ## Set up environment
