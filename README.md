@@ -1,33 +1,39 @@
 # CC Instruction
-
-Set up environment untuk menjalankan program ini, menggunakan perintah ini di terminal :
+## Set up environment
+To run this program, use the following command in the terminal:
 conda create -n symptomed python=3.8
 conda activate symptomed
+
+```bash
 python -m pip install -r requirements.txt --upgrade
+```
+=================================================================================================================
+
+## Adjust the model's path on line 18 according to its location.
+
+For example, if the model is located at "/root/model/model.h5", then the path on line 18 should be adjusted to "/root/model/"
+
+Similarly, for the tokenizer's location on line 19, if it is located at "/root/tokenizer/tokenizer.json",
+then the path on line 19 should be adjusted to "/root/tokenizer/"
 
 =================================================================================================================
 
-Path lokasi model bert line 18 disesuaikan untuk penempatan modelnya.
+## Set Port
+To set the port, use the following command in the terminal:
 
-Misal path model berada di "/root/model/model.h5", berarti path di line 18 itu disesuaikan menjadi "/root/model/"
-
-Begitu juga dengan lokasi tokenizer pada line 19, misal lokasinya berada di "/root/tokenizer/tokenizer.json",
-berarti path di line 19 disesuaikan menjadi "/root/tokenizer/"
-
-=================================================================================================================
-
-Untuk menetapkan port, menggunakan perintah ini di terminal :
+```bash
 export PORT=8080
+```
+Simply adjust 8080 to the desired port number. If port 8080 is already in use, you can choose another port.
 
-8080 disesuaikan saja dengan port yang ingin digunakan, jika 8080 udah ada yang menggunakan...maka bisa menggunakan
-port yang lain.
-
-=================================================================================================================
-
+```bash
 export PATH=$PATH:/place/with/the/file
-
+```
 =================================================================================================================
 
-# Untuk menjalankan program, menggunakan perintah ini di terminal :
+To run the program, use the following command in the terminal:
 conda activate symptomed
+
+bash
+Copy code
 python main.py
