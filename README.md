@@ -1,8 +1,7 @@
 # CC Instruction
 
 # Architecture
-<h1 align="center">Cloud Computing Section</h1>
-</div>
+
 <p align="center">
   <img src="image/Architecture.png">
 </p>
