@@ -1,53 +1,33 @@
-# CCinstructions
-Step to build
-Build Google Cloud Storage bucket using Terraform
-Upload model file to bucket
-Update config for application for bucketname and bucketfolder if changed
-Dockerize image
-Build Google Cloud Run using Terraform
-Note: make service account from GCP and create JSON key and put the key in the same directory with main app
-Docker
-how to build docker images :
+# CC Instruction
 
-cd Bangkit-C22CB-Company-Based-Capstone/CC
-docker build -t chatbot:0.1 .
-it will build ubuntu server and all the app configurations in Dockerfile
+Set up environment untuk menjalankan program ini, menggunakan perintah ini di terminal :
+conda create -n symptomed python=3.8
+conda activate symptomed
+python -m pip install -r requirements.txt --upgrade
 
-check if the docker image built successfully.
+=================================================================================================================
 
-docker images
-run the docker image to the container by writing this command
+Path lokasi model bert line 18 disesuaikan untuk penempatan modelnya.
 
-docker run -p 8080:8080 chatbot:0.1
-or for naming it :
+Misal path model berada di "/root/model/model.h5", berarti path di line 18 itu disesuaikan menjadi "/root/model/"
 
-docker run -p 8080:8000 --name chatbot-traveloka chatbot:0.1
-check if it run successfully on port 8080
+Begitu juga dengan lokasi tokenizer pada line 19, misal lokasinya berada di "/root/tokenizer/tokenizer.json",
+berarti path di line 19 disesuaikan menjadi "/root/tokenizer/"
 
-curl http://localhost:8080 | curl http://0.0.0.0:8080
-to get inside the server / container use this command :
+=================================================================================================================
 
-docker exec -it [container_id] bash | docker exec -it [container_id] sh
-ls
-exit
-Evicted Pods Problem
-if there is a fail container/pod with status evicted, write this command to delete all of them :
+Untuk menetapkan port, menggunakan perintah ini di terminal :
+export PORT=8080
 
-kubectl get pod | grep Evicted | awk '{print $1}' | xargs kubectl delete pod
-Artifact Registry
-how to pull from artifact registry :
+8080 disesuaikan saja dengan port yang ingin digunakan, jika 8080 udah ada yang menggunakan...maka bisa menggunakan
+port yang lain.
 
-gcloud auth configure-docker us-central1-docker.pkg.dev
-now you got the permission and ready to pull it to local docker image
+=================================================================================================================
 
-docker pull us-central1-docker.pkg.dev/sacred-armor-346113/chatbot-tvlk/chatbot-app:0.1
-Terraform
-Initialize a working directory containing Terraform configuration files. :
+export PATH=$PATH:/place/with/the/file
 
-terraform init
-evaluates a Terraform configuration to determine the desired state of all the resources it declares, then compares that desired state to the real infrastructure objects being managed with the current working directory and workspace :
+=================================================================================================================
 
-terraform plan
-terminates resources managed by your Terraform project :
-
-terraform destroy
+# Untuk menjalankan program, menggunakan perintah ini di terminal :
+conda activate symptomed
+python main.py
