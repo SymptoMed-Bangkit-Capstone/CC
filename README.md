@@ -38,6 +38,6 @@ export PATH=$PATH:/place/with/the/file
 To run the program, use the following command in the terminal:
 conda activate symptomed
 
-bash
-Copy code
+```bash
 python main.py
+```
